@@ -64,7 +64,7 @@ var _ = Describe("Ginkgo", func() {
 		})
 	})
 
-	FIt("works and showcases Gomega matchers", func() {
+	It("works and showcases Gomega matchers", func() {
 		Expect(5).To(Equal(5))    // Deep equality, strict about types
 		Expect(5).NotTo(Equal(3)) // Also with negations
 		Expect(5).ToNot(Equal(3)) //

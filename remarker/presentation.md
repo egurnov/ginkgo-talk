@@ -359,9 +359,16 @@ class: center, middle
 # httptest
 
 ```go
-func NewServer(handler http.Handler) *Server
-func NewTLSServer(handler http.Handler) *Server
-func NewUnstartedServer(handler http.Handler) *Server
+server = httptest.NewServer(
+	http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("Hello, World!"))
+	}),
+)
+```
+
+```go
+response, err = http.Get(server.URL)
 ```
 
 ---

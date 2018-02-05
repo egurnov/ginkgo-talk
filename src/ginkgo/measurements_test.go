@@ -51,6 +51,7 @@ var _ = Describe("Measurements", func() {
 
 			runtime := b.Time("runtime", func() {
 				wg := sync.WaitGroup{}
+				wg.Add(1)
 				go worker(&countA, queue, &wg)
 				wg.Wait()
 			})

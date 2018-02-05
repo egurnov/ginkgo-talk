@@ -2,7 +2,7 @@ package ginkgo_test
 
 import (
 	"errors"
-	"fmt"
+	"log"
 
 	. "github.com/egurnov/ginkgo-talk/src/handler"
 	. "github.com/egurnov/ginkgo-talk/src/handler/handlerfakes"
@@ -121,15 +121,15 @@ var _ = Describe("Handler", func() {
 				go func() {
 					defer GinkgoRecover()
 					err := <-errChan
-					fmt.Println("received result")
+					log.Println("received result")
 					Expect(err).To(BeNil())
 					// Expect(err).ToNot(BeNil()) // will panic without GinkgoRecover
 					close(syncChan)
-					fmt.Println("closed sync")
+					log.Println("closed sync")
 				}()
-				fmt.Println("waiting sync")
+				log.Println("waiting sync")
 				<-syncChan
-				fmt.Println("received sync")
+				log.Println("received sync")
 				Expect(fc.SendArgsForCall(0)).To(And(HaveSuffix("Scotty"), ContainSubstring(msg)))
 			})
 		})
