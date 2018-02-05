@@ -91,7 +91,7 @@ class: center, middle
 
 # Ginkgo
 
-DBB-style testing framework
+BDD-style testing framework
 
 Can be paired with any assertions library, although Gomega is preferred.
 
